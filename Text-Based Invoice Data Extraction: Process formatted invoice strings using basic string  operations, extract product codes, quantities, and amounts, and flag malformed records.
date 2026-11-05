@@ -1,0 +1,47 @@
+
+n = int(input("Enter number of invoices: "))
+
+for i in range(n):
+    print("\nInvoice", i + 1)
+
+    invoice = input("Enter invoice (Code,Quantity,Amount): ")
+
+    parts = invoice.split(",")
+
+    if len(parts) == 3:
+        code = parts[0]
+        quantity = parts[1]
+        amount = parts[2]
+
+        if code != "" and quantity.isdigit():
+            try:
+                amount = float(amount)
+
+                if amount >= 0 and code.isalnum():
+                    print("Product Code:", code)
+                    print("Quantity:", quantity)
+                    print("Amount:", amount)
+                else:
+                    print("Invalid invoice record")
+
+            except ValueError:
+                print("Invalid amount")
+
+        else:
+            print("Malformed invoice record")
+
+    else:
+        print("Malformed invoice record")
+output :
+Enter number of invoices: 2
+Invoice 1
+Enter invoice (Code,Quantity,Amount): p75z1,3,459
+Product Code: p75z1
+Quantity: 3
+Amount: 459.0
+
+Invoice 2
+Enter invoice (Code,Quantity,Amount): ge35,6,891
+Product Code: ge35
+Quantity: 6
+Amount: 891.0
